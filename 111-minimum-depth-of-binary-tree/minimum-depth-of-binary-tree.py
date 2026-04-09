@@ -1,9 +1,17 @@
 class Solution:
     def minDepth(self, root: Optional[TreeNode]) -> int:
-        if root==None:
-            return 0
-        left=self.minDepth(root.left)
-        right=self.minDepth(root.right)
-        if root.left==None or root.right==None:
-            return max(left,right)+1
-        return min(left,right)+1
+        def dfs(root,depth):
+            if root==None: 
+                res.append(depth)
+                return
+            if root.left==None:
+                dfs(root.right,depth+1)
+            elif root.right==None:
+                dfs(root.left,depth+1)
+            else:
+                dfs(root.left,depth+1)
+                dfs(root.right,depth+1)
+        #-----------------------
+        res=[]
+        dfs(root,0)
+        return min(res)
