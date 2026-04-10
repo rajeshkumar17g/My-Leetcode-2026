@@ -4,12 +4,13 @@ class Solution:
         def traversal(root):
             if root==None:
                 return
-            if(root.val==target.val):
+            if root.val==target.val:
                 return root # reference
-            left=traversal(root.left) 
+            left=traversal(root.left)
             right=traversal(root.right)
             if left!=None:
                 return left
-            return right
-        #--------------------
+            if right!=None:
+                return right
+        #--------------------------------
         return traversal(cloned)
