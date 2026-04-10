@@ -18,7 +18,9 @@ class Solution:
         #-------------------------
         res=[]
         traversal(root)
-        return len(res)"""
+        return len(res)
+        
+        
 class Solution:
     def countNodes(self, root: Optional[TreeNode]) -> int:
         self.count=0
@@ -31,4 +33,22 @@ class Solution:
         #-------------------------
        
         traversal(root)
-        return self.count
+        return self.count"""
+
+
+class Solution:
+    def countNodes(self, root: Optional[TreeNode]) -> int:
+            if root==None:
+                return 0
+            left=self.countNodes(root.left)
+            right=self.countNodes(root.right)
+            return left+right+1
+
+
+
+
+
+
+
+
+
