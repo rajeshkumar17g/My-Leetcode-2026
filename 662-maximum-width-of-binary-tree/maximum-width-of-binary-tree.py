@@ -1,5 +1,4 @@
 class Solution:
-    """My iterative BFS Solution"""
     def widthOfBinaryTree(self, root: Optional[TreeNode]) -> int:     
         if not root:
             return 0
