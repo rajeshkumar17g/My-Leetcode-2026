@@ -8,13 +8,14 @@ class Node:
 
 class Solution:
     def levelOrder(self, root: 'Node') -> List[List[int]]:
+
         if root==None:
             return []
-        #FIFO
-        q=deque([root]) # q=[root]. # deque array. .append(). .popleft()
+
+        q=deque([root]) 
         res=[]
 
-        while q: # while q is not empty 
+        while q: 
             level=[]
             for _ in range(len(q)):
                 node=q.popleft()
