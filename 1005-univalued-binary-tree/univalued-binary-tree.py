@@ -1,5 +1,6 @@
 class Solution:
     def isUnivalTree(self, root: Optional[TreeNode]) -> bool:
+        
         if root==None:
             return True
         if root.left!=None and root.left.val!=root.val:
