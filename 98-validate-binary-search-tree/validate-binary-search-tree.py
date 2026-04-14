@@ -1,9 +1,19 @@
 class Solution:
-    def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        def valid(node, minimum, maximum):
+    def isValidBST(self, root):
+        self.prev = float('-inf')
+        
+        def inorder(node):
             if not node:
                 return True
-            if not (node.val > minimum and node.val < maximum):
+            
+            if not inorder(node.left):
                 return False
-            return valid(node.left, minimum, node.val) and valid(node.right, node.val, maximum)
-        return valid(root, float("-inf"), float("inf"))
+            
+            if node.val <= self.prev:
+                return False
+            
+            self.prev = node.val
+            
+            return inorder(node.right)
+        
+        return inorder(root)
