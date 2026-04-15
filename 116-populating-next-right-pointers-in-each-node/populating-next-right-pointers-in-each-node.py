@@ -7,11 +7,8 @@ class Node:
         self.right = right
         self.next = next
 """
-
-class Solution:
-    def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
-        
-        def dfs(root):
+"""
+def dfs(root):
             if not root:
                 return
             if root.left:
@@ -24,9 +21,26 @@ class Solution:
         #---------------
         dfs(root)
         return root
-
-
-
-
-
-
+"""
+class Solution:
+    def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
+        if root==None:
+            return root
+        
+        q=deque([root])
+        while q:
+            level=[]
+            for _ in range(len(q)):
+                node=q.popleft()
+                level.append(node)
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+            
+            for index in range(len(level)-1):
+                level[index].next=level[index+1]
+            
+        return root
+            
+        
