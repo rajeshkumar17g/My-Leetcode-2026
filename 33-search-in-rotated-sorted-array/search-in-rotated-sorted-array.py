@@ -1,5 +1,13 @@
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
+        
+        for index in range(len(nums)):
+            if nums[index]==target:
+                return index
+        return -1
+
+        '''
+
         low=0
         high=len(nums)-1
 
@@ -22,3 +30,4 @@ class Solution:
                     high=mid-1
         
         return -1
+        '''
