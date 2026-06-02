@@ -9,8 +9,6 @@ class Solution:
             if nums[crr]!=0:
                 nums[prev],nums[crr]=nums[crr],nums[prev]
                 prev+=1
-                crr+=1
-            else:
-                crr+=1
+            crr+=1
         
         
