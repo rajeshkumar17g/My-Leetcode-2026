@@ -1,7 +1,7 @@
 class Solution:
     def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
 
-        if head==None or head.next==None or k==0:
+        if head==None or head.next==None:
             return head
         # 1st step
 
@@ -21,9 +21,6 @@ class Solution:
             fast=fast.next
         
         slow=head
-        if fast==None: #length and rotations are same so zero rot
-            return head
-
         while fast.next!=None:
             slow=slow.next
             fast=fast.next
