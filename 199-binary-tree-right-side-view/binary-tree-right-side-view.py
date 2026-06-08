@@ -4,8 +4,7 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-class Solution:
-    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+'''
         if root==None:
             return []
             
@@ -22,4 +21,21 @@ class Solution:
                 if node.right!=None:
                     q.append(node.right)
             res.append(level[-1])
+        return res'''
+class Solution:
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+
+
+        def traversal(root,depth):
+            if root==None:
+                return
+
+            if depth==len(res):
+                res.append(root.val)
+                
+            traversal(root.right,depth+1)
+            traversal(root.left,depth+1)
+        #----------------------------------------
+        res=[]
+        traversal(root,0)
         return res
