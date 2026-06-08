@@ -1,7 +1,5 @@
 from collections import deque
-
-class Solution:
-    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+'''
         if root==None:
             return []
             
@@ -19,3 +17,50 @@ class Solution:
                     q.append(node.right)
             res.append(level)
         return res
+'''
+
+
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+
+        def traversal(root,depth):
+            if root==None:
+                return
+
+            if depth==len(res):
+                res.append([])
+            res[depth].append(root.val)
+            traversal(root.left,depth+1)
+            traversal(root.right,depth+1)
+        #----------------------------------------
+        res=[]
+        traversal(root,0)
+        return res
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
