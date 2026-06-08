@@ -8,11 +8,11 @@ class Solution:
     def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
         if root==None:
             return []
-        
+            
         res=[]
-        q=deque([root])
+        q=deque([root]) # q=[None]
 
-        while q:
+        while q: 
             level=[]
             for _ in range(len(q)):
                 node=q.popleft()
