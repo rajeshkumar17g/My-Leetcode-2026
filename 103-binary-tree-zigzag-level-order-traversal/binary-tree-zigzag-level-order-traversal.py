@@ -8,11 +8,11 @@ class Solution:
     def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if root==None:
             return []
-        #FIFO
-        q=deque([root]) # q=[root]. # deque array. .append(). .popleft()
+            
         res=[]
-        l=1
-        while q: # while q is not empty 
+        q=deque([root]) # q=[None]
+        zig_zag=False
+        while q: 
             level=[]
             for _ in range(len(q)):
                 node=q.popleft()
@@ -21,10 +21,9 @@ class Solution:
                     q.append(node.left)
                 if node.right!=None:
                     q.append(node.right)
-            if l%2==1:
-                 res.append(level)
+            if zig_zag==False:
+                res.append(level)
             else:
                 res.append(level[::-1])
-            l=l+1
-        
+            zig_zag=not zig_zag
         return res
