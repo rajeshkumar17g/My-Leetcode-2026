@@ -16,7 +16,7 @@ class Solution:
         left=self.lowestCommonAncestor(root.left,p,q)
         right=self.lowestCommonAncestor(root.right,p,q)
 
-        if left!=None and right!=None:
+        if left and right:
             return root
         if left==None:
             return right
