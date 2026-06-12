@@ -5,6 +5,26 @@ class Solution:
                 res.append(subset[:])
                 return
             
+            subset.append(nums[i])
+            helper(subset,i+1)
+            subset.pop()
+            while i+1<len(nums) and nums[i]==nums[i+1]:
+                i=i+1
+            helper(subset,i+1)
+        #--------------------------------------------
+        res=[]
+        nums.sort()
+        helper([],0) # subset=[] i=0
+        return res
+
+'''
+
+
+        def helper(subset,i):
+            if i==len(nums):
+                res.append(subset[:])
+                return
+            
             subset.append(nums[i]) # pick made a move
             helper(subset,i+1) # backtracking # exploring that path
             subset.pop() # undo the move # Not pick
@@ -18,3 +38,4 @@ class Solution:
             if subset not in ans:
                 ans.append(subset)
         return ans
+        '''
