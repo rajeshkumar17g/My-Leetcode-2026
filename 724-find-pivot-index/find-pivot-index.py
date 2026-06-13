@@ -12,8 +12,6 @@ class Solution:
         for index in range(-2,-(len(nums)+1),-1):
             right_prefix[index]=right_prefix[index+1]+nums[index+1]
 
-        print(left_prefix)
-        print(right_prefix)
         for index in range(len(nums)):
             if left_prefix[index]==right_prefix[index]:
                 return index
