@@ -13,7 +13,8 @@ class Solution:
                 crr_vowels+=1
             if crr_vowels>max_vowels:
                 max_vowels=crr_vowels
-
+            if crr_vowels==k:
+                return k
         return max_vowels
 
 
