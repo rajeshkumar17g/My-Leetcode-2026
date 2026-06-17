@@ -1,34 +1,46 @@
 class Solution:
-    def strStr(self, haystack, needle):
+    def strStr(self, haystack: str, needle: str) -> int:
+        n=len(haystack)
+        m=len(needle)
+        lps=[0]*m
+
+        prevLPS=0
+        i=1
+        while i<m:
+            if needle[i]==needle[prevLPS]:
+                lps[i]=prevLPS+1
+                prevLPS+=1
+                i+=1
+            elif prevLPS==0:
+                lps[i]=0
+                i=i+1
+            else:
+                prevLPS=lps[prevLPS-1]
         
-        def rabin_karp(string,pattern):
-            n=len(string)
-            m=len(pattern)
-            if n<m:
-                return -1
+
+        i=0
+        j=0
+        while i<n:
+            if haystack[i]==needle[j]:
+                i=i+1
+                j=j+1
+            else:
+                if j==0:
+                    i=i+1
+                else:
+                    j=lps[j-1]
+            if j==m:
+                return i-m
+        return -1
             
-            d=256
-            q=101 # take a large prime number to avoid collisions
-            
-            h=1
-            p=0
-            s=0
-            
-            for i in range(m-1):
-                h=(h*d)%q
-                
-            for i in range(m):
-                p=(p*d+ord(pattern[i]))%q # pattern hash
-                s=(s*d+ord(string[i]))%q  # 1st window hash
-                
-            for i in range(n-m+1):
-                if p==s: # we found a match # proceed with checking individual chgaracxters
-                    if pattern==string[i:i+m]:
-                        return i
-                if i<n-m:
-                    s=(d*(s-ord(string[i])*h)+ord(string[i+m]))%q
-                
-                    if s<0:
-                        s=s+q
-            return -1
-        return rabin_karp(haystack,needle)
+
+
+
+
+
+
+
+
+
+
+
