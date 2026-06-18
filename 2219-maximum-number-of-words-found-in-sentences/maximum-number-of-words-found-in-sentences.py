@@ -1,5 +1,6 @@
 class Solution:
     def mostWordsFound(self, sentences: List[str]) -> int:
+      #eee srkr
         res=[]
         for string in sentences:
             res.append(len(string.split()))
