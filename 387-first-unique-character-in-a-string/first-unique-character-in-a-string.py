@@ -5,5 +5,4 @@ class Solution:
             if s[index] not in s[index+1:] and s[index] not in seen:
                 return index
             seen.append(s[index])
-    
         return -1
