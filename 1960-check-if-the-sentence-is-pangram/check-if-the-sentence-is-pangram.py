@@ -1,3 +1,3 @@
 class Solution:
-    def checkIfPangram(self, s: str) -> bool:
-        return len(set(s))==26
+    def checkIfPangram(self, sentence: str) -> bool:
+        return len(set(sentence))==26
