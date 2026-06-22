@@ -1,34 +1,15 @@
 class Solution:
     def maxVowels(self, s: str, k: int) -> int:
-        max_vowels=0
-        for i in range(k):
-            if s[i] in 'aeiou':
-                max_vowels+=1
-        # assuming 1st window is our max window
-        crr_vowels=max_vowels
-        for i in range(1,len(s)-k+1):
-            if s[i-1] in 'aeiou':
-                crr_vowels-=1 # if ele chjar is vowel
-            if s[i+k-1] in 'aeioiu':
-                crr_vowels+=1
-            if crr_vowels>max_vowels:
-                max_vowels=crr_vowels
-            if crr_vowels==k:
-                return k
-        return max_vowels
-
-
-        '''
-        maxvowels=0
-        for i in range(0,len(s)-k+1):
-            crr_vowels=0
-            for j in range(i,i+k):
-                if s[j] in 'aeiou':
-                    crr_vowels+=1
-                
-            if crr_vowels>maxvowels:
-                maxvowels=crr_vowels
+        crr_window=0
+        for index in range(k):
+            if s[index] in 'aeiou':
+                crr_window+=1
         
-        return maxvowels
-    '''
-        
+        max_window=crr_window
+        for index in range(1,len(s)-k+1):
+            if s[index-1] in 'aeiou':
+                crr_window-=1
+            if s[index+k-1] in 'aeiou':
+                crr_window+=1
+            max_window=max(crr_window,max_window)
+        return max_window
