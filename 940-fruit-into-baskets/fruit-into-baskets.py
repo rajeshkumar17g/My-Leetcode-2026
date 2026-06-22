@@ -10,7 +10,7 @@ class Solution:
             else:
                     seen[fruits[right]]=0
 
-            if left<len(fruits) and len(seen)>2:
+            while left<len(fruits) and len(seen)>2:
                 if seen[fruits[left]]==0:
                     seen.pop(fruits[left])
                 else:
@@ -18,5 +18,5 @@ class Solution:
                 left+=1
             
             ans=max(ans,right-left+1)
-            
+
         return ans
