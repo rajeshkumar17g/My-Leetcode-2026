@@ -3,9 +3,8 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next 
-class Solution:
-    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
-         crr=head
+'''
+crr=head
          c=0
          while crr!=None:
             c+=1
@@ -18,4 +17,17 @@ class Solution:
          while c<middle:
             c+=1
             crr=crr.next
-         return crr
+         return crr'''
+class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+         slow=head
+         fast=head
+         while fast!=None and fast.next!=None:
+            slow=slow.next
+            fast=fast.next
+            fast=fast.next
+         return slow
+
+
+
+
