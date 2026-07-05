@@ -4,7 +4,6 @@ class Solution:
         Do not return anything, modify matrix in-place instead.
         """
         n=len(matrix)
-
         for i in range(n):
             for j in range(n):
                 if i<j:
@@ -12,3 +11,5 @@ class Solution:
         
         for row in matrix:
             row.reverse()
+            
+        
