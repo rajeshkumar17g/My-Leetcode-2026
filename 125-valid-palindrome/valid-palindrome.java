@@ -11,6 +11,10 @@ class Solution {
         }
 
         System.out.println(res);
+         System.out.println(res);
+          System.out.println(res);
+           System.out.println(res);
+            System.out.println(res);
         int left=0,right=res.length()-1;
         while(left<=right){
             if(res.charAt(left)!=res.charAt(right)){
