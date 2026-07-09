@@ -8,14 +8,22 @@ class Solution {
     private void backtracking(int[] nums, int i, ArrayList<Integer> subset, List<List<Integer>> res){
 
         
-        res.add(new ArrayList<>(subset));// adding a copy of subset
-        
+        res.add(new ArrayList<>(subset)); // every state is a solution state
         for(int j=i;j<nums.length;j++){
-            subset.add(nums[j]); // Pick making a choice
-            backtracking(nums,j+1,subset,res); // exploring a path
-            subset.remove(subset.size()-1);// not picking # undo the choice
+            subset.add(nums[j]); // pick // make a choice
+            backtracking(nums,j+1,subset,res); // backtrack // explore a new path
+            subset.remove(subset.size()-1); // not pick // undo the choice
         }
     }
+
+
+
+
+
+
+
+
+
 
     /*
      public List<List<Integer>> subsets(int[] nums) {
