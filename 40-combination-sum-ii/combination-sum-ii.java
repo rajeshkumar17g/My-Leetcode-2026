@@ -14,7 +14,7 @@ class Solution {
         if(sum>target){
             return;
         }
-        HashSet<Integer> seen=new HashSet<>();
+        HashSet<Integer> seen=new HashSet<Integer>();
         for(int j=i;j<nums.length;j++){
             if(seen.contains(nums[j])){
                 continue;
