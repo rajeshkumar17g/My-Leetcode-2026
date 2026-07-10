@@ -23,7 +23,7 @@ class Solution {
 
           // checking col
         for(int i=0;i<9;i++){
-            // col is fixed 
+            // colis fixed 
             if(row!=i && board[row][col]==board[i][col]){
                 return false;
             }
