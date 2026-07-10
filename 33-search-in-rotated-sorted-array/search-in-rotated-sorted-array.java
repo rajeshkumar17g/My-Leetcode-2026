@@ -1,13 +1,12 @@
 class Solution {
     public int search(int[] nums, int target) {
         int low=0,high=nums.length-1;
-
         while(low<=high){
             int mid=low+(high-low)/2;
 
             if(nums[mid]==target){
                 return mid;
-            }
+            }//left is sorted
             else if(nums[low]<=nums[mid]){
                 if(target>=nums[low] && target<nums[mid]){
                     high=mid-1;
@@ -15,10 +14,10 @@ class Solution {
                 else{
                     low=mid+1;
                 }
-            }
+            }//right is sorted
             else{
-                if(target>nums[mid] && target<=nums[high]){
-                   low=mid+1;
+                 if(target>nums[mid] && target<=nums[high]){
+                    low=mid+1;
                 }
                 else{
                     high=mid-1;
@@ -26,14 +25,5 @@ class Solution {
             }
         }
         return -1;
-
-
-        /*
-        for(int i=0;i<nums.length;i++){
-            if(nums[i]==target){
-                return i;
-            }
-        }
-        return -1;*/
     }
 }
