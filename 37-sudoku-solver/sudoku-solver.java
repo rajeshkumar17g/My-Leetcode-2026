@@ -1,7 +1,6 @@
 class Solution {
     public void solveSudoku(char[][] board) {
         backtracking(board);
- 
     }
     private boolean backtracking(char[][] board){
         for(int row=0;row<9;row++){
@@ -9,19 +8,18 @@ class Solution {
                 if(board[row][col]=='.'){
                     for(char num='1';num<='9';num++){
                         if(is_valid(board,row,col,num)==true){
-                            board[row][col]=num;
-                            if(backtracking(board)==true){
+                            board[row][col]=num;  //fill the box
+                            if(backtracking(board)==true){ //if filled all 9 rows we get true we return back
                                 return true;
                             }
-                            board[row][col]='.';
+                            board[row][col]='.'; // erase the number
                         } 
                     }
-                    return false;
+                    return false;//if all 9 choices are not applicable return false
                 }
             }
         }
-        return true;
-
+        return true;// if all 9 rows are filled and we look to fill 10th row we return true thats our sol
     }
 
 
