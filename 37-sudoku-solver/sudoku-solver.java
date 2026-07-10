@@ -9,7 +9,11 @@ class Solution {
                     for(char num='1';num<='9';num++){
                         if(is_valid(board,row,col,num)==true){
                             board[row][col]=num;  //fill the box
-                            if(backtracking(board)==true){ //if filled all 9 rows we get true we return back
+                            if(backtracking(board)==true){ 
+                                //if filled all 9 rows we get true, then we return back
+                                // why? if we dont return at this line
+                                // the board will be reset by empty slots again since we are modifiying the org board
+                                // next line is '.' we are returning here to skip it and go back as we got the answer
                                 return true;
                             }
                             board[row][col]='.'; // erase the number
