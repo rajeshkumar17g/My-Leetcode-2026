@@ -19,7 +19,7 @@ class Solution {
                             board[row][col]='.'; // erase the number
                         } 
                     }
-                    return false;//if all 9 choices are not applicable return false
+                    return false;//if all 9 choices are not applicable return false //not a valid path // reset last val
                 }
             }
         }
