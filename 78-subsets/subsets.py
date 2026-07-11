@@ -6,7 +6,7 @@ class Solution:
                 return
             subset.append(nums[i]) # make the move # pick
             backtracking(i+1,subset) # backtrack
-            subset.pop() # undo the move  # noty pick
+            subset.remove(nums[i]) # undo the move  # noty pick
             backtracking(i+1,subset) # backtrack 
        #----------------------------------------
        res=[]
