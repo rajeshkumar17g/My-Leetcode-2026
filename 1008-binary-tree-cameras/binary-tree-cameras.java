@@ -24,8 +24,6 @@ class Solution {
         else if(left.equals("camera") || right.equals("camera")){
             return "gap";
         }
-        else{
-            return "leaf";
-        }
+        return "leaf";
     }
 }
