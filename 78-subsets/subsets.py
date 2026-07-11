@@ -12,3 +12,5 @@ class Solution:
        res=[]
        backtracking(0,[]) # i=0 subset=[]
        return res
+
+       nums=[a,b,c]
