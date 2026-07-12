@@ -4,6 +4,26 @@ class Solution:
             if i==len(nums):
                 res.append(nums[:])
                 return
+            seen=set()
+            for j in range(i,len(nums)):
+                if(nums[j] in seen):
+                    continue
+                seen.add(nums[j])
+                nums[i],nums[j]=nums[j],nums[i]
+                backtracking(i+1)
+                nums[i],nums[j]=nums[j],nums[i]
+        #----------------------------------------------------
+        res=[]
+        backtracking(0)   # i=0
+        return res
+
+
+        '''
+        # recursion
+         def backtracking(i):
+            if i==len(nums):
+                res.append(nums[:])
+                return
             for j in range(i,len(nums)):
                 nums[i],nums[j]=nums[j],nums[i]
                 backtracking(i+1)
@@ -15,4 +35,4 @@ class Solution:
         for li in res:
             if li not in ans:
                 ans.append(li)
-        return ans
+        return ans'''
