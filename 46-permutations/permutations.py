@@ -1,20 +1,14 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
-        
-        # [a, b, c]
-        #  0. 1. 2
-        #.           ==3. i==len(nums) 
-        #.       j.  2
-        def backtracking(nums,i):
-            if i==len(nums): # if i==len means all swappings are done thats a solution
-                res.append(nums[:])# storing a copy of it
-                return # we reached a solution, so stop 
-                
+        def backtracking(i):
+            if i==len(nums):
+                res.append(nums[:])
+                return
             for j in range(i,len(nums)):
-                nums[i],nums[j]=nums[j],nums[i] # made a choice
-                backtracking(nums,i+1) # tracking the new path
-                nums[i],nums[j]=nums[j],nums[i] # undo the choice
-        #----------------------------------------------------------------------
+                nums[i],nums[j]=nums[j],nums[i]
+                backtracking(i+1)
+                nums[i],nums[j]=nums[j],nums[i]
+        #----------------------------------------------------
         res=[]
-        backtracking(nums,0)
+        backtracking(0)   # i=0
         return res
