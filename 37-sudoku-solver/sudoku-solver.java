@@ -1,68 +1,44 @@
 class Solution {
-    public void solveSudoku(char[][] board) {
-        backtracking(board);
-    }
-    private boolean backtracking(char[][] board){
-        for(int row=0;row<9;row++){
-            for(int col=0;col<9;col++){
-                if(board[row][col]=='.'){
-                    for(char num='1';num<='9';num++){
-                        if(is_valid(board,row,col,num)==true){
-                            board[row][col]=num;  //fill the box
-                            if(backtracking(board)==true){ 
-                                //if filled all 9 rows we get true, then we return back
-                                // why? if we dont return at this line
-                                // the board will be reset by empty slots again since we are modifiying the org board
-                                // next line is '.' we are returning here to skip it and go back as we got the answer
-                                return true;
-                            }
-                            board[row][col]='.'; // erase the number
-                        } 
+     private boolean is_valid(char[][] board,int row,int col, int num){
+        for(int i=0;i<9;i++){
+            if((col!=i && num==board[row][i]) || (row!=i && num==board[i][col])){
+                return false;
+            }   
+        }
+        int rs=(row/3)*3;
+            int cs=(col/3)*3;
+            for(int r=rs;r<rs+3;r++){
+                for(int c=cs;c<cs+3;c++){
+                    if(num==board[r][c] && (row!=r && col!=c)){
+                        return false;
                     }
-                    return false;//if all 9 choices are not applicable return false //not a valid path // reset last val
                 }
             }
-        }
-        return true;// if all 9 rows are filled and we look to fill 10th row we return true thats our sol
+            return true;
     }
-
-
-      private boolean is_valid(char[][] board, int row,int col,int num){
-        int i;
-            for(i=0;i<9;i++){
-                if(board[row][i]==num || board[i][col]==num){
+    private boolean backtracking(char[][] board){
+         for(int r=0;r<9;r++){
+            for(int c=0;c<9;c++){
+                if(board[r][c]=='.'){
+                    for(char num='1';num<='9';num++){
+                        if(is_valid(board,r,c,num)){
+                            board[r][c]=num; //make the move
+                            if(backtracking(board)==true){
+                                return true;
+                            }
+                            board[r][c]='.'; //undo the move
+                        }
+                    }
                     return false;
                 }
             }
-                int r=(row/3)*3;
-                int c=(col/3)*3;
-                for(i=0;i<3;i++){
-                    for(int j=0;j<3;j++){
-                        if(board[r+i][c+j]==num){
-                            return false;
-                        }
-                    }
-                }
+        }
 
-            
-             return true;
+        return true;
+
+
+    }
+    public void solveSudoku(char[][] board) {
+       backtracking(board);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
