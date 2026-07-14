@@ -18,30 +18,18 @@ class Node {
 */
 
 class Solution {
-    public List<Integer> preorder(Node root) {
-        List<Integer> res=new ArrayList<>();
-        traversal(root,res);
-        return res;
-    }
-    private void traversal(Node root, List<Integer> res){
+    private void dfs(List<Integer> res,Node root){
         if(root==null){
             return;
         }
         res.add(root.val);
         for(Node child: root.children){
-            traversal(child,res);
+            dfs(res,child);
         }
     }
+    public List<Integer> preorder(Node root) {
+        List<Integer> res=new ArrayList<>();
+        dfs(res,root);
+        return res;
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
