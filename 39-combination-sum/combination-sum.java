@@ -7,14 +7,11 @@ class Solution {
         if(sum>target){
             return;
         }
-
         for(int j=i;j<candidates.length;j++){
             subset.add(candidates[j]);
             backtracking(res,subset,j,sum+candidates[j],candidates,target);
             subset.remove(subset.size()-1);
         }
-
-
     }
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> res=new ArrayList<>();
