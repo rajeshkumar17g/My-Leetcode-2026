@@ -10,34 +10,17 @@
 
 class Solution {
     public final TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
-        return traversal(cloned,target);
-    }
-
-    private TreeNode traversal(TreeNode root,TreeNode target){
-        if(root==null){
-            return null;
+        if(cloned==null){
+            return cloned;
         }
-        if(root.val==target.val){
-            return root;
+        if(target.val==cloned.val){
+            return cloned;
         }
-        TreeNode left=traversal(root.left,target);
-        TreeNode right=traversal(root.right,target);
-        if(left!=null){
+        TreeNode left=getTargetCopy(original,cloned.left,target);
+        TreeNode right=getTargetCopy(original,cloned.right,target);
+        if(left!=null)
             return left;
-        }
         return right;
+
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
