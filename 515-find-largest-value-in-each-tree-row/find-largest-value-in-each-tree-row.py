@@ -8,15 +8,16 @@ class Solution:
     def largestValues(self, root: Optional[TreeNode]) -> List[int]:
         if root==None:
             return []
-            
-        res=[]
-        q=deque([root]) # q=[None]
 
-        while q: 
+        q=deque([root])
+        res=[]
+
+        while q:
             level=[]
             for _ in range(len(q)):
                 node=q.popleft()
                 level.append(node.val)
+
                 if node.left!=None:
                     q.append(node.left)
                 if node.right!=None:
