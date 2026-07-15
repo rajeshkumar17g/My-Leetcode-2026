@@ -2,8 +2,6 @@ class Solution {
     public int[][] updateMatrix(int[][] mat) {
         int rows=mat.length;
         int cols=mat[0].length;
-
-       
         LinkedList<int[]> q = new LinkedList<>();
 
         for (int i=0;i<rows;i++){
@@ -15,7 +13,6 @@ class Solution {
                 }
             }
         }
-
 
         int[][] directions={{0, 1},{0, -1},{1, 0},{-1, 0}};
 
