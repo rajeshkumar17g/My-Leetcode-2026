@@ -82,10 +82,9 @@ class Solution {
         // accessing all the edges
         for(int i=0;i<new_edges.length;i++){
 
-            // if i=> skip    -1=> not skiiping
-            // include=-1 // we dont have to include
-            // include =i // we have to include it
-
+          
+            // 3rd argument is -1 => dont skip
+            // 4th argument is -1 dont forcefully include
             if(kMST(n,new_edges,i,-1)>actual_MST){
                 critical.add(new_edges[i][3]);
             }
