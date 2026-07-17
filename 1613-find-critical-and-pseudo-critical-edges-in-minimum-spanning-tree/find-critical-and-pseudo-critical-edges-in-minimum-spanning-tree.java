@@ -3,9 +3,19 @@
     current [v1,v2,weight]  --> [v1,v2,weight,org_index_pos]
 2. Krushkals MST --> DSU
 3. Find MST for the graph => original value
-4. take every edge => 
-    skip => if mst>original mst => crtical edge
-    include => if mst==original mst => pseudo critical edge
+4. take every edge =>  and we try to skip it (exclude it) 
+                        or we include it( by force -> starting with that edge and
+                        letting kMST do its job of finding minimum value)
+
+    when we skip => if new_mst>original mst => crtical edge
+                    loosing that edge costs us more, so its a crtical one
+                    should be included in every MST
+
+    include => if new_mst==original mst => pseudo critical edge
+                    its a part of another MST (alternative), 
+                    including this edge or excluding it
+                    doesnt effect anything, and it contributes to Actual MSt
+                    so its a Pseudo edge
 5. return crtical & pseduo
 */
 class Solution {
@@ -95,7 +105,7 @@ class Solution {
             Dsu dsu=new Dsu(n);
             int min_weight=0;
             int count_edges=0;
-            
+            // before we calculate the actual MST we are forcefully include the current edge
             if(i!=-1){ // forcefully including the path
                 int[] edge=new_edges[i];
                 int v1=edge[0];
@@ -110,10 +120,9 @@ class Solution {
 
 
             for(int j=0;j<new_edges.length;j++){
-                if(skip==j){
+                if(skip==j){ //skip this edge
                     continue;
                 }
-
                 int[] edge=new_edges[j];
                 int v1=edge[0];
                 int v2=edge[1];
