@@ -31,14 +31,12 @@ class Node {
 class Solution {
     HashMap<Node,Node> map=new HashMap<>();
     public Node cloneGraph(Node node) {
-        if(node==null){
+        if(node==null)
             return node;
-        }
 
-        if(map.containsKey(node)==true){
+        if(map.containsKey(node)==true)
             return map.get(node);
-        }
-    
+        
         Node newnode=new Node(node.val);
         map.put(node,newnode);
         for(Node neigh: node.neighbors){
