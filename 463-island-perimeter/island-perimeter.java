@@ -17,11 +17,11 @@ class Solution {
         int rows=grid.length;
         int cols=grid[0].length;
 
-        for(int r=0;r<rows;r++){
-            for(int c=0;c<cols;c++){
+        first: for(int r=0;r<rows;r++){
+            second: for(int c=0;c<cols;c++){
                 if(grid[r][c]==1){
                    ans=dfs(grid,r,c);
-                   
+                   break first;
                 }
             }
         }
