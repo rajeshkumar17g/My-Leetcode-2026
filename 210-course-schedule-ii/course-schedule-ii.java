@@ -35,7 +35,7 @@ class Solution {
             }
         }
         
-        System.out.println(res);
+       
         if(res.size()<n){
             return new int[]{};
         }
