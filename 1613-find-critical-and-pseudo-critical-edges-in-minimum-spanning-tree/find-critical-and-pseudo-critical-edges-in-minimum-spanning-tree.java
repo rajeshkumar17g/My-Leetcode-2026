@@ -18,138 +18,149 @@
                     so its a Pseudo edge
 5. return crtical & pseduo
 */
-class Solution {
-    class Dsu{
-        int[] parent;
-        int[] rank;
 
+class Solution {
+     class Dsu{
+        int [] parent;
+        int [] rank;
         Dsu(int n){
             parent=new int[n];
             rank=new int[n];
-
             for(int i=0;i<n;i++){
                 parent[i]=i;
             }
         }
-
-
-        int find(int x){
-            if(parent[x]!=x){
-                parent[x]=find(parent[x]); // path compre
+            public int find(int vertex){
+                if(parent[vertex]!=vertex){
+                    return parent[vertex]=find(parent[vertex]);
+                }
+                return parent[vertex]; // or vertex
             }
-            return parent[x];
+            
+            boolean union(int u, int v){
+                int pu=find(u);
+                int pv=find(v);
+                
+                if(pu==pv){
+                    return false;
+                }
+                
+                if(rank[pu]<rank[pv]){
+                    parent[pu]=pv;
+                }
+                else  if(rank[pu]>rank[pv]){
+                    parent[pv]=pu;
+                }
+                else{
+                    parent[pv]=pu;
+                   rank[pv]++;
+                }
+
+                 return true;
+            }
+            
+        
+    }
+    public int Kmst(int n, int[][] edges,int skip,int include){
+
+        Dsu dsu=new Dsu(n);
+        int min_weight=0;
+        int count=0;
+
+        if(include!=-1){
+            int[] edge=edges[include];
+            int u=edge[0];
+            int v=edge[1];
+            int w=edge[2];
+           
+           if(dsu.union(u,v)==true){
+                min_weight+=w;
+                count++;
+           }
         }
 
-        boolean union(int v1,int v2){
-            int pv1=find(v1);
-            int pv2=find(v2);
 
-            if(pv1==pv2){
-                return false;
-            }
+       for(int i=0;i<edges.length;i++){
+        int u=edges[i][0];
+        int v=edges[i][1];
+        int w=edges[i][2];
+        int index=edges[i][3];
 
-            if(rank[pv1]<rank[pv2]){
-                parent[pv1]=pv2;
-            }
-            else if(rank[pv1]>rank[pv2]){
-                parent[pv2]=pv1;
-            }
-            else{
-                parent[pv2]=pv1;
-                rank[pv1]++;
-            }
-            return true;
+        if(skip==i){
+            continue;
         }
+
+        if(dsu.union(u,v)==true){
+            min_weight+=w;
+            count++;
+            if(count==n-1){
+                break;
+            }
+        }
+
+
+       }
+
+    if (count<n-1){
+        return Integer.MAX_VALUE;
+    }
+
+       return min_weight;
+
     }
     public List<List<Integer>> findCriticalAndPseudoCriticalEdges(int n, int[][] edges) {
+        int ec=edges.length,i;
+        int[][] new_edges=new int[ec][4];
 
-        int[][] new_edges=new int [edges.length][4];
-
-        for(int i=0;i<edges.length;i++){
-            new_edges[i][0]=edges[i][0];   // copying v1
-            new_edges[i][1]=edges[i][1];   // copying v2
-            new_edges[i][2]=edges[i][2];   // copying w
-            new_edges[i][3]=i;   // copying index position in 3rd index => imp
+        for(i=0;i<ec;i++){
+            new_edges[i][0]=edges[i][0];  // contains u
+            new_edges[i][1]=edges[i][1];  // contains v
+            new_edges[i][2]=edges[i][2];  // contains weight
+            new_edges[i][3]=i;            // contains index
         }
 
         Arrays.sort(new_edges,(a,b)->a[2]-b[2]);
+        int org_mst=Kmst(n,new_edges,-1,-1); //7
 
-        int actual_MST=kMST(n,new_edges,-1,-1); // calculating org mst
+        ArrayList<Integer> critical=new ArrayList<>();
+        ArrayList<Integer> pseudo=new ArrayList<>();
 
-        List<Integer> critical=new ArrayList<>();
-        List<Integer> pseudo=new ArrayList<>();
-
-        // accessing all the edges
-        for(int i=0;i<new_edges.length;i++){
-
-          
-            // 3rd argument is -1 => dont skip
-            // 4th argument is -1 dont forcefully include
-            if(kMST(n,new_edges,i,-1)>actual_MST){
+        for(i=0;i<ec;i++){
+            if(Kmst(n,new_edges,i,-1)>org_mst){
                 critical.add(new_edges[i][3]);
             }
-            else if(kMST(n,new_edges,-1,i)==actual_MST){
+            else if(Kmst(n,new_edges,-1,i)==org_mst){
                 pseudo.add(new_edges[i][3]);
             }
-        }  
-
-        List<List<Integer>> res=new ArrayList<>();
-        res.add(critical);
-        res.add(pseudo);
-        return res;
-    }
-
-    public int kMST(int n,int[][] new_edges,int skip,int i){
-            
-            Dsu dsu=new Dsu(n);
-            int min_weight=0;
-            int count_edges=0;
-            // before we calculate the actual MST we are forcefully include the current edge
-            if(i!=-1){ // forcefully including the path
-                int[] edge=new_edges[i];
-                int v1=edge[0];
-                int v2=edge[1];
-                int w=edge[2];
-
-                if(dsu.union(v1,v2)==true){
-                    min_weight+=w;
-                    count_edges++;
-                }
-            }
-
-
-            for(int j=0;j<new_edges.length;j++){
-                if(skip==j){ //skip this edge
-                    continue;
-                }
-                int[] edge=new_edges[j];
-                int v1=edge[0];
-                int v2=edge[1];
-                int w=edge[2];
-
-                if(dsu.union(v1,v2)==true){
-                    min_weight+=w;
-                    count_edges++;
-                }
-                 if(count_edges==n-1){
-                    break;
-                 }
-            }
-            
-            if(count_edges<n-1){
-                return Integer.MAX_VALUE; // disjoint graphs
-            }
-
-            return min_weight;   
+        }
+        
+         List<List<Integer>> res=new ArrayList<>();
+         res.add(critical);
+         res.add(pseudo);
+         return res;
 
     }
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
