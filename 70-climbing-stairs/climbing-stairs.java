@@ -1,5 +1,23 @@
 class Solution {
-    int[] dp;
+    
+    public int climbStairs(int n) {
+       int f1=1,f2=2,f3=0;
+      if(n<=2){
+        return n;
+      }
+      else{
+        for(int i=3;i<=n;i++){
+            f3=f1+f2;
+            f1=f2;
+            f2=f3;
+        }
+      }
+      return f3;
+    }
+}
+
+/*
+int[] dp;
     public int climbStairs(int n) {
        dp=new int[n+1];
        dp[0]=1;
@@ -17,4 +35,4 @@ class Solution {
             return dp[n];
         }
     }
-}
+    */
