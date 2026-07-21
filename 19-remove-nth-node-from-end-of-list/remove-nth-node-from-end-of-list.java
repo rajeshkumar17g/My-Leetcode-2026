@@ -8,12 +8,10 @@ class Solution {
         if(fast==null){
             return head.next;
         }
-        System.out.println(fast.val);
         while(fast.next!=null){
             fast=fast.next;
             slow=slow.next;
         }
-        System.out.println(slow.val);
         slow.next=slow.next.next;
         return head;
     }
