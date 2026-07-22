@@ -1,4 +1,3 @@
-
 class Solution {
     public ListNode middleNode(ListNode head) {
         ListNode slow=head,fast=head;
