@@ -1,14 +1,23 @@
 
 class Solution {
     public ListNode reverseList(ListNode head) {
-        ListNode rev=null;
-        ListNode crr=head,after;
+
+        ListNode crr=head,after,rev_head=null;
         while(crr!=null){
             after=crr.next;
-            crr.next=rev;
-            rev=crr;
+            crr.next=rev_head;
+            rev_head=crr;
             crr=after;
         }
-        return rev;
+        return rev_head;
+
+
+
+
+
+
+
+
+
     }
 }
