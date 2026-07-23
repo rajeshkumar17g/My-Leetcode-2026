@@ -1,4 +1,24 @@
 class Solution {
+     public void backtracking(int i, List<Integer> subset,int[] nums,List<List<Integer>> res){
+            res.add(new ArrayList<>(subset));
+            for(int j=i;j<nums.length;j++){
+                subset.add(nums[j]);
+                backtracking(j+1,subset,nums,res);
+                subset.remove(subset.size()-1);
+            }
+     }
+    public List<List<Integer>> subsets(int[] nums) {
+           List<Integer> subset=new ArrayList<>();
+        List<List<Integer>> res= new ArrayList<>();
+
+        backtracking(0,subset,nums,res);
+
+        return res;
+    }
+}
+
+/*
+class Solution {
     public void backtracking(int i, List<Integer> subset,int[] nums,List<List<Integer>> res){
         if(i==nums.length){
             res.add(new ArrayList<>(subset));
@@ -19,3 +39,4 @@ class Solution {
 
     }
 }
+*/
