@@ -14,23 +14,23 @@ class Node {
         val = _val;
         children = _children;
     }
-}
+};
 */
 
 class Solution {
-    private void dfs(List<Integer> res,Node root){
+    public void dfs(Node root,List<Integer> res){
         if(root==null){
             return;
         }
-       
+        
         for(Node child: root.children){
-            dfs(res,child);
+            dfs(child,res);
         }
-         res.add(root.val);
+        res.add(root.val);
     }
     public List<Integer> postorder(Node root) {
         List<Integer> res=new ArrayList<>();
-        dfs(res,root);
+        dfs(root,res);
         return res;
     }
 }
