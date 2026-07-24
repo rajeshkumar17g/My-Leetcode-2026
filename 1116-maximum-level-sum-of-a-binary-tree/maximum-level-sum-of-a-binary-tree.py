@@ -12,7 +12,7 @@ class Solution:
         q=deque([root])
         res=[]
         max_level=1
-        max_sum=root.val
+        max_level_sum=root.val
         l=1
         while q:
             level=[]
@@ -24,8 +24,8 @@ class Solution:
                     q.append(node.left)
                 if node.right!=None:
                     q.append(node.right)
-            if(sum(level)>max_sum):
-                max_sum=sum(level)
+            if(sum(level)>max_level_sum):
                 max_level=l
-            l=l+1
+                max_level_sum=sum(level)
+            l+=1
         return max_level
