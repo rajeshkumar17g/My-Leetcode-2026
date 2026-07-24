@@ -1,6 +1,5 @@
-
 class Solution {
-    private void dfs(TreeNode root,List<Integer> res){
+    public void dfs(TreeNode root,List<Integer> res){
         if(root==null){
             return;
         }
