@@ -24,5 +24,6 @@ class Solution:
                     q.append(node.right)
             res.append(sum(level))
         res.sort()
-        if(k>len(res)):return -1
-        return res[-k]
+        if(k<=len(res)):
+             return res[-k]
+        return -1
