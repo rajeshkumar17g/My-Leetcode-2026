@@ -21,9 +21,10 @@ class Solution {
         if(p==null || q==null || p.val!=q.val){
             return false;
         }
-        return (isSameTree(p.left,q.left) && isSameTree(p.right,q.right)) || (isSameTree(p.left,q.right) && isSameTree(p.right,q.left));
+        return (isSameTree(p.left,q.left) && isSameTree(p.right,q.right)) ||
+        (isSameTree(p.left,q.right) && isSameTree(p.right,q.left));
     }
     public boolean flipEquiv(TreeNode root1, TreeNode root2) {
-       return isSameTree(root1,root2);
+        return isSameTree(root1,root2);
     }
 }
