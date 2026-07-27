@@ -26,10 +26,11 @@ class Solution {
         for(Node child: root.children){
             dfs(child,res);
         }
+
     }
     public List<Integer> preorder(Node root) {
-        List<Integer> res=new ArrayList<>();
-        dfs(root,res);
-        return res;
+         List<Integer> res=new ArrayList<>();
+         dfs(root,res);
+         return res;
     }
 }
