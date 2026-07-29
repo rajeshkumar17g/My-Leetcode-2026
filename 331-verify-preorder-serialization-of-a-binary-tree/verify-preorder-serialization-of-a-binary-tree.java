@@ -1,18 +1,17 @@
 class Solution {
     public boolean isValidSerialization(String preorder) {
+        String[] list=preorder.split(",");
         int degree=1;
-        String[] pre=preorder.split(",");
-        for(int i=0;i<pre.length;i++){
+        for(String ch: list){
             degree--;
             if(degree<0){
                 return false;
             }
-            if(!pre[i].equals("#")){
+
+            if(!ch.equals("#")){
                 degree=degree+2;
-            }  
+            }
         }
         return degree==0;
-
-
     }
 }
