@@ -7,12 +7,14 @@
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         def dfs(root):
-            if(root==None):
-                return
-            dfs(root.left)
-            res.append(root.val)
-            dfs(root.right)
-        #-----------------------------------
+            if root:
+                dfs(root.left)
+                res.append(root.val)
+                dfs(root.right)
+        #-------------------------------------------
         res=[]
         dfs(root)
-        return res==sorted(res) and len(set(res))==len(res)
+        for index in range(1,len(res)):
+            if(res[index-1]>=res[index]):
+                return False
+        return True
