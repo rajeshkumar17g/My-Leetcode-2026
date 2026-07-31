@@ -11,8 +11,6 @@
 6. repeat the process for all edges
 7. return the final combined ans of crtical+Pseudo critical
 */
-
-
 class Solution {
     class Dsu{
         int[] parent,rank;
@@ -70,9 +68,6 @@ class Solution {
             }
         }
 
-
-
-
         for(int i=0;i<new_edges.length;i++){
 
             if(i==skip){
@@ -91,16 +86,11 @@ class Solution {
                     break;
                 }
             }
-
-
         }
         if(edges_count==n-1){
              return min_weight;
         }
         return Integer.MAX_VALUE;
-       
-
-
     }
 
     public List<List<Integer>> findCriticalAndPseudoCriticalEdges(int n, int[][] edges) {
@@ -137,20 +127,5 @@ class Solution {
         res.add(critical);
         res.add(pseudo);
         return res;
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
