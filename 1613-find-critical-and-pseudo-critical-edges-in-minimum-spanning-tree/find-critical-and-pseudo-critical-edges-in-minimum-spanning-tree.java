@@ -95,7 +95,6 @@ class Solution {
 
     public List<List<Integer>> findCriticalAndPseudoCriticalEdges(int n, int[][] edges) {
 
-
         int[][] new_edges=new int[edges.length][4];
 
         for(int i=0;i<edges.length;i++){
@@ -107,9 +106,9 @@ class Solution {
         }
 
         Arrays.sort(new_edges,(a,b)->a[2]-b[2]);
-                                 // 3rd value is skip -1 (include)
-                                 //4th value is include (index)->include
-        int org_mst=Kmst(n,new_edges,-1,-1); // -1 means dont skip
+                                 // 3rd value is skip :  passing index to skip,  -1 to (include)
+                                 // 4th value is include:  passing (index)->include , -1 to skip
+        int org_mst=Kmst(n,new_edges,-1,-1); 
 
         List<Integer> critical=new ArrayList<>();
         List<Integer> pseudo=new ArrayList<>();
