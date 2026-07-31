@@ -1,6 +1,6 @@
 class Solution {
     public int[] findOrder(int n, int[][] edges) {
-          ArrayList<Integer>[] adj=new ArrayList[n];
+        ArrayList<Integer>[] adj=new ArrayList[n];
        for(int i=0;i<n;i++){
            adj[i]=new ArrayList<>();
        }
@@ -36,17 +36,12 @@ class Solution {
            }
        }
        if(res.size()==n){
-        int[] ans=new int[n];
-        int i=0;
-        for(int ele:res){
-            ans[i]=ele;
-            i++;
-        }
-        return ans;
+       int[] ans=new int[n];
+       for(int i=0;i<n;i++){
+            ans[i]=res.get(i);
        }
-       else{
-        return new int[]{};
+       return ans;
        }
-        
+       return new int[]{};
     }
 }
