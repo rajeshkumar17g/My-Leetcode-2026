@@ -56,7 +56,8 @@ class Solution {
 
         Dsu dsu=new Dsu(n);
         int edges_count=0,min_weight=0;
-        if(include!=-1){
+
+        if(include!=-1){//force include
             int[] edge=new_edges[include];
             int u=edge[0];
             int v=edge[1];
@@ -68,9 +69,9 @@ class Solution {
             }
         }
 
-        for(int i=0;i<new_edges.length;i++){
+        for(int i=0;i<new_edges.length;i++){ //normal mst calculation
 
-            if(i==skip){
+            if(i==skip){ //skip and see if weight increases for crtical edge
                 continue;
             }
             int[] edge=new_edges[i];
@@ -78,7 +79,6 @@ class Solution {
             int v=edge[1];
             int w=edge[2];
         
-
             if(dsu.union(u,v)==true){
                 min_weight=min_weight+w;
                 edges_count++;
@@ -114,11 +114,11 @@ class Solution {
         List<Integer> pseudo=new ArrayList<>();
 
         for(int i=0;i<new_edges.length;i++){
-            if(Kmst(n,new_edges,i,-1)>org_mst){
+            if(Kmst(n,new_edges,i,-1)>org_mst){ //if skipping increases org_weight its critical
                 critical.add(new_edges[i][3]);//org_index
             }
-            else if(Kmst(n,new_edges,-1,i)==org_mst){
-                pseudo.add(new_edges[i][3]);//org_index
+            else if(Kmst(n,new_edges,-1,i)==org_mst){ // if including it by force still equals to org_weight
+                pseudo.add(new_edges[i][3]);// then its pseudo critical
             }
         }
 
