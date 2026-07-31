@@ -1,50 +1,52 @@
 class Solution {
     public int[] findOrder(int n, int[][] edges) {
-        ArrayList<Integer>[] adj=new ArrayList[n];
-        for(int i=0;i<n;i++)
-            adj[i]=new ArrayList<>();
-        
-        int[] indegree=new int[n];
-        
-        for(int[] edge:edges){
-            int u=edge[0];
-            int v=edge[1];
-            
-            adj[v].add(u);
-            indegree[u]++;
-        }
-        LinkedList<Integer> q=new LinkedList<>();
-        
-        for(int i=0;i<n;i++){
-            if(indegree[i]==0){
-                q.addLast(i);
-            }
-        }
-        ArrayList<Integer> res=new ArrayList<>();
-        
-        while(!q.isEmpty()){
-            int vertex=q.removeFirst();
-            res.add(vertex);
-            
-            for(int neigh: adj[vertex]){
-                indegree[neigh]--;
-                
-                if(indegree[neigh]==0){
-                    q.addLast(neigh);
-                }
-            }
-        }
-        
+          ArrayList<Integer>[] adj=new ArrayList[n];
+       for(int i=0;i<n;i++){
+           adj[i]=new ArrayList<>();
+       }
        
-        if(res.size()<n){
-            return new int[]{};
-        }
-
+       ArrayList<Integer> res=new ArrayList<>();
+       int[] indegree=new int[n];
+       
+       for(int i=0;i<edges.length;i++){
+           int[] edge=edges[i];
+           
+           int u=edge[0];
+           int v=edge[1];
+           adj[v].add(u);
+           indegree[u]++;
+       }
+       
+       LinkedList<Integer> q=new LinkedList<>();
+       
+       for(int i=0;i<n;i++){
+           if(indegree[i]==0){
+               q.addLast(i);
+           }
+       }
+       
+       while(!q.isEmpty()){
+           int vertex=q.removeFirst();
+           res.add(vertex);
+           for(int neigh: adj[vertex]){
+               indegree[neigh]--;
+               if(indegree[neigh]==0){
+                   q.addLast(neigh);
+               }
+           }
+       }
+       if(res.size()==n){
         int[] ans=new int[n];
-        for(int i=0;i<n;i++){
-            ans[i]=res.get(i);
+        int i=0;
+        for(int ele:res){
+            ans[i]=ele;
+            i++;
         }
         return ans;
+       }
+       else{
+        return new int[]{};
+       }
         
     }
 }
