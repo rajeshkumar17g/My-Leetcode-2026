@@ -1,4 +1,4 @@
-#include<stdbool.h>
+
 bool isPerfectSquare(int x) {
     int low=1,high=x;
     while(low<=high){
