@@ -12,13 +12,7 @@ class Solution:
                 elif ch=='*':
                     res=pop2*pop1
                 elif ch=='/':
-                    sign=1
-                    if pop1*pop2<0:
-                        sign=-1
-                        pop1=abs(pop1)
-                        pop2=abs(pop2)
-                    res=pop2//pop1
-                    res=sign*res
+                    res=int(eval(str(pop2)+"/"+str(pop1)))
                 stack.append(res)
             else:
                 stack.append(int(ch))
