@@ -1,9 +1,12 @@
 class Solution {
     public boolean checkPerfectNumber(int num) {
-        int factors=0;
-        for(int i=1;i<(num/2)+1;i++){
+        if(num==1){
+            return false;
+        }
+        int factors=1;
+        for(int i=2;i<=Math.sqrt(num);i++){
             if(num%i==0){
-                factors+=i;
+                factors=factors+i+num/i;
             }
         }
         return factors==num;
