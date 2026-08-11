@@ -1,39 +1,26 @@
 class Solution:
+    '''
+    10 10 20 30 30 40 40  50 50 60 60 
+     0  1  2  3  4  5  6  7  8  9  10 
+     l     m     h  m               
+
+    '''
     def singleNonDuplicate(self, nums: List[int]) -> int:
         low=0
         high=len(nums)-1
-
-        while (low<=high):
+        while(low<high):
             mid=(low+high)//2
-            if(mid%2==1):
-                if(nums[mid]==nums[mid-1]):
-                    low=mid+1
+            print(low,high,mid)
+            if(nums[mid]!=nums[mid+1] and nums[mid]!=nums[mid-1]):
+                return nums[mid]
+            elif(nums[mid]==nums[mid-1]):
+                if((mid-1)%2==0):
+                    low=mid+2
                 else:
-                    high=mid-1
+                    high=mid-2
             else:
-                if(nums[mid]==nums[mid-1]):
-                    high=mid-1
+                if((mid)%2==0):
+                    low=mid+2
                 else:
-                    low=mid+1
-        if mid%2==0:
-            return nums[mid]
-        else:
-            return nums[mid-1]
-            
-        '''
-
-
-        ans=0
-        for ele in nums:
-            ans=ans^ele
-        return ans
-
-
-        if len(nums)==1:
-            return nums[0]
-        for index in range(0,len(nums),2):
-            if index+1<len(nums) and nums[index]!=nums[index+1]:
-                return nums[index]
-
-        return nums[-1]
-        '''
+                    high=mid-1
+        return nums[high]
