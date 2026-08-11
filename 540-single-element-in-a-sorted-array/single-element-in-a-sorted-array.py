@@ -29,5 +29,3 @@ class Solution:
                     low = mid + 2
                 else:
                     high = mid - 1
-
-        return -1
