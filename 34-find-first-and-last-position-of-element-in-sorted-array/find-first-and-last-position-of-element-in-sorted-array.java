@@ -1,13 +1,13 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
-        int[] arr={-1,-1}; //fo=arr[0]   lo=arr[1]
+        
         int low=0,high=nums.length-1;
+        int fo=-1;
 
         while(low<=high){
             int mid=low+(high-low)/2;
-
             if(target==nums[mid]){
-                arr[0]=mid;
+                fo=mid;
                 high=mid-1;
             }
             else if(target>nums[mid]){
@@ -21,12 +21,12 @@ class Solution {
 
         low=0;
         high=nums.length-1;
+        int lo=-1;
 
         while(low<=high){
             int mid=low+(high-low)/2;
-
             if(target==nums[mid]){
-                arr[1]=mid;
+                lo=mid;
                 low=mid+1;
             }
             else if(target>nums[mid]){
@@ -36,7 +36,14 @@ class Solution {
                 high=mid-1;
             }
         }
-        
-        return arr;
+
+        return new int[]{fo,lo};
+
     }
 }
+/*
+1. finding 1st occurance
+    fo=-1
+    bs: target==nums[mid]: update fo and move left
+2. last occurance
+*/
