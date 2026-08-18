@@ -8,7 +8,7 @@ class Solution {
         ListNode prev=dummy,crr=head;
 
         while(crr!=null && crr.next!=null){
-            if(crr.next!=null && crr.val==crr.next.val){
+            if(crr.val==crr.next.val){
                 while(crr.next!=null && crr.val==crr.next.val){
                     crr=crr.next;
                 }
@@ -16,7 +16,6 @@ class Solution {
                 prev.next=crr;
             }
             else{
-                prev.next=crr;
                 prev=crr;
                 crr=crr.next;
             }
