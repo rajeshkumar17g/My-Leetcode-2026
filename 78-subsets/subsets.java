@@ -2,7 +2,30 @@ class Solution {
 
     public void backtracking(int[] nums, List<Integer> subset, int index, List<List<Integer>> res){
 
-        // checking if crr_state==solution state
+        if(index==nums.length){ //crr_state==solution state
+            res.add(new ArrayList<>(subset)); //add a copy into result
+            return;
+        }
+
+        subset.add(nums[index]); //pick the element
+        backtracking(nums,subset,index+1,res); //move to next stage
+        subset.remove(subset.size()-1); // not picking the element
+        backtracking(nums,subset,index+1,res);//move to next stage
+
+    }
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> res=new ArrayList<>();
+        List<Integer> subset=new ArrayList<>();
+
+        backtracking(nums,subset,0,res);
+
+        return res;
+    }
+}
+
+/*
+
+ // checking if crr_state==solution state
         if(index==nums.length){ // 1==3? X  2==3? X  3==3?  YEs
             res.add(new ArrayList<>(subset)); //we will change this   //we need add a copy of crr state in final ans //res=[[a,b,c]]
             return;
@@ -23,4 +46,5 @@ class Solution {
 
         return res;
     }
-}
+
+    */
