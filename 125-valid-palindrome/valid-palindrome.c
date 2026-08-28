@@ -6,9 +6,9 @@ void toLowercase(char* s){
     }
 }
 bool isPalindrome(char* s) {
-    printf("Org: %s\n",s);
+    
     toLowercase(s);
-    printf("LowerCase: %s\n",s);
+ 
 
     char res[200000];
 
@@ -25,7 +25,7 @@ bool isPalindrome(char* s) {
     res[i]='\0';
 
 
-    printf("AlphaNumeric: %s",res);
+    
      int left=0;
     int right=i-1;
 
