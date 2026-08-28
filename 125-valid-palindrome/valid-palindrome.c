@@ -9,10 +9,7 @@ bool isPalindrome(char* s) {
     
     toLowercase(s);
  
-
     char res[200000];
-
-
     int i=0;
     for(int index=0;s[index]!='\0';index++){
          if((s[index]>='a' && s[index]<='z') ||
@@ -24,9 +21,7 @@ bool isPalindrome(char* s) {
     }
     res[i]='\0';
 
-
-    
-     int left=0;
+    int left=0;
     int right=i-1;
 
     while(left<right){
