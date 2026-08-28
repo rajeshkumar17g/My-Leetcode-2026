@@ -1,16 +1,20 @@
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
 int* twoSum(int* nums, int n, int target, int* returnSize) {
-
     static int res[2];
-
-    for(int i=0;i<n-1;i++){
-        for(int j=i+1;j<n;j++){
-            if(nums[i]+nums[j]==target){
-                res[0]=i;
-                res[1]=j;
-            }
-        }
-        printf("\n");
-    }
     *returnSize=2;
+
+    for(int row=0;row<n-1;row++){
+        for(int col=row+1;col<n;col++){
+           if(nums[row]+nums[col]==target){
+            res[0]=row;
+            res[1]=col;
+            return res;
+           }
+        }
+    }
+
     return res;
+    
 }
