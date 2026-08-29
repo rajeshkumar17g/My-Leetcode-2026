@@ -7,7 +7,22 @@
  */
 struct ListNode* middleNode(struct ListNode* head) {
     
-    struct ListNode* crr=head;
+    struct ListNode *slow=head,*fast=head;
+
+    while(fast!=NULL && fast->next!=NULL){
+
+        slow=slow->next;
+        fast=fast->next;
+        fast=fast->next;
+
+    } 
+    return slow;
+  
+}
+
+
+/*
+  struct ListNode* crr=head;
     int count=0;
 
     while(crr!=NULL){
@@ -22,7 +37,5 @@ struct ListNode* middleNode(struct ListNode* head) {
         count++;
         crr=crr->next;
     }
-
-
     return crr;
-}
+*/
