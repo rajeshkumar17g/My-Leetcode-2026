@@ -4,9 +4,12 @@
  *     int val;
  *     struct ListNode *next;
  * };
+ */
+struct ListNode* middleNode(struct ListNode* head) {
+    
+    struct ListNode* crr=head;
+    int count=0;
 
- int count=0;
-    struct ListNode *crr=head;
     while(crr!=NULL){
         count++;
         crr=crr->next;
@@ -19,15 +22,7 @@
         count++;
         crr=crr->next;
     }
-    return crr;
- */
-struct ListNode* middleNode(struct ListNode* head) {
 
-    struct ListNode *slow=head, *fast=head;
-    while(fast!=NULL && fast->next!=NULL){
-        slow=slow->next;
-        fast=fast->next;
-        fast=fast->next;
-    }
-    return slow;
+
+    return crr;
 }
