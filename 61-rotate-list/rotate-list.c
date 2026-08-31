@@ -1,31 +1,38 @@
-
 struct ListNode* rotateRight(struct ListNode* head, int k) {
     
     if(head==NULL || head->next==NULL){
         return head;
     }
-    struct ListNode* crr=head;
-    int length=0;
-    while(crr!=NULL){
+    //1. length
+    struct ListNode *crr=head;
+
+    int length=1;
+    while(crr->next!=NULL){
         crr=crr->next;
         length++;
     }
+    
+    //2. k=k%len
     k=k%length;
 
-    struct ListNode* slow=head,*fast=head;
-    int count=0;
-    while(count<k){
-        count++;
-        fast=fast->next;
-    }
+    //3. tail->head
+    crr->next=head;
 
-    while(fast->next!=NULL){
-        slow=slow->next;
-        fast=fast->next;
+    //4. 
+    int pos=length-k;
+    crr=head;
+    int count=1;
+    while(count<pos){
+        crr=crr->next;
+        count++;
     }
-    fast->next=head;
-    head=slow->next;
-    slow->next=NULL;
+    //5. 
+    head=crr->next;
+
+    //6.
+    crr->next=NULL;
+
 
     return head;
+
 }
