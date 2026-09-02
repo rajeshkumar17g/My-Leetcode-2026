@@ -9,10 +9,9 @@ class Solution {
             if(target==nums[mid]){
                 return mid;
             }
-            
-            //left is sorted
-            if(nums[low]<=nums[mid]){
-                //element is present in sorted region
+
+            // if left is sorted
+            else if(nums[low]<=nums[mid]){
                 if(target>=nums[low] && target<nums[mid]){
                     high=mid-1;
                 }
@@ -20,9 +19,7 @@ class Solution {
                     low=mid+1;
                 }
             }
-            //right is sorted
             else{
-                //element is present in sorted region
                 if(target>nums[mid] && target<=nums[high]){
                     low=mid+1;
                 }
@@ -32,7 +29,8 @@ class Solution {
             }
         }
 
-    return -1;
+        return -1;
+
 
     }
 }
