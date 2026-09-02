@@ -1,14 +1,13 @@
 class Solution {
     public boolean checkPerfectNumber(int num) {
-        if(num==1){
-            return false;
-        }
-        int factors=1;
-        for(int i=2;i<=Math.sqrt(num);i++){
+        
+        int sum=0;
+        for(int i=1;i<num;i++){
             if(num%i==0){
-                factors=factors+i+num/i;
+                sum=sum+i;
             }
         }
-        return factors==num;
+        
+        return sum==num;
     }
 }
