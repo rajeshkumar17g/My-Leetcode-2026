@@ -1,16 +1,12 @@
 class Solution {
     public int mySqrt(int x) {
-        if(x==0|| x==1){
-            return x;
-        }
-        long n;
-        for(n=0;n<x;n++){
-            long sq=n*n;
-            if(sq>x){
-                break;
+        long i;
+        for(i=1;i<=x;i++){
+            if(i*i>x){
+               break;
             }
         }
 
-        return (int)n-1;
+        return (int)i-1;
     }
 }
