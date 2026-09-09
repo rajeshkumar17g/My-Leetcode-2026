@@ -2,13 +2,18 @@ class Solution {
     public boolean checkPerfectNumber(int num) {
         
         int sum=0;
-        for(int i=1;i<=num/2;i++){
+        for(int i=1;i<=Math.sqrt(num);i++){
             if(num%i==0){
-                 sum=sum+i;
+               sum=sum+i+num/i;
+               System.out.print(" "+i+' '+num/i+" ");
             }
         }
 
-        return sum==num;
+        if(Math.sqrt(num)*Math.sqrt(num)==num){
+            sum=sum-(int)Math.sqrt(num);
+        }
+
+        return (sum-num)==num;
     }
 }
 /*
