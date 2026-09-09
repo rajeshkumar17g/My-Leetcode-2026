@@ -5,7 +5,6 @@ class Solution {
         for(int i=1;i<=Math.sqrt(num);i++){
             if(num%i==0){
                sum=sum+i+num/i;
-               System.out.print(" "+i+' '+num/i+" ");
             }
         }
 
