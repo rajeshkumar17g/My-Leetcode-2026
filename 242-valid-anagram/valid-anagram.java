@@ -6,15 +6,14 @@ class Solution {
         for(int i=0;i<s.length();i++){
             char ch=s.charAt(i);
 
-            int index=ch-97;
+            int index=(int)ch-97;
             arr[index]++;
         }
 
-
-        for(int i=0;i<t.length();i++){
+         for(int i=0;i<t.length();i++){
             char ch=t.charAt(i);
 
-            int index=ch-97;
+            int index=(int)ch-97;
             arr[index]--;
         }
 
@@ -24,10 +23,8 @@ class Solution {
                 return false;
             }
         }
+
         return true;
-
-
-
 
     }
 }
