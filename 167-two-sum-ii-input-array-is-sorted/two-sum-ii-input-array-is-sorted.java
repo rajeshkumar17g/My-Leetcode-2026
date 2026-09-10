@@ -1,6 +1,27 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        HashMap<Integer,Integer> map=new HashMap<>();
+        
+        int left=0,right=nums.length-1;
+
+        while(left<right){
+            if(nums[left]+nums[right]==target){
+                return new int[]{left+1,right+1};
+            }
+            else if(nums[left]+nums[right]<target){
+                left++;
+            }
+            else{
+                right--;
+            }
+        }
+
+        return nums;//dummy
+    }
+}
+
+
+/*
+HashMap<Integer,Integer> map=new HashMap<>();
 
         for(int i=0;i<nums.length;i++){
             int num1=nums[i];
@@ -14,5 +35,4 @@ class Solution {
 
         }
         return nums;//dummy
-    }
-}
+*/
