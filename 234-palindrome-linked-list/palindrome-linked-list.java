@@ -1,15 +1,38 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * 
+ 
+ 
+ 
+ }
+
+1. middle 
+2. 1st half reverse upto middle
+3. check 1st half and 2nd half
+
+Note: fast!=null=> odd number => skip mid for crr2 
+
+
+
+ */
 class Solution {
     public boolean isPalindrome(ListNode head) {
         
-        ListNode l1,l2;
         ListNode slow=head,fast=head;
+
         while(fast!=null && fast.next!=null){
             slow=slow.next;
             fast=fast.next.next;
         }
-
         
-        ListNode crr=head,after,rev_head=null;
+        ListNode rev_head=null,after,crr=head;
+
         while(crr!=slow){
             after=crr.next;
             crr.next=rev_head;
@@ -17,34 +40,24 @@ class Solution {
             crr=after;
         }
 
-        l1=rev_head;
-
-        //even or odd
         if(fast!=null){
-            //odd
-            l2=slow.next;
-        }
-        else{
-            l2=slow;
+            slow=slow.next;
         }
 
-        while(l1!=null && l2!=null){
-            if(l1.val!=l2.val){
+       ListNode crr1=rev_head,crr2=slow;
+       while(crr1!=null && crr2!=null){
+            if(crr1.val!=crr2.val){
                 return false;
             }
-            l1=l1.next;
-            l2=l2.next;
-        }
-        return true;
+            crr1=crr1.next;
+            crr2=crr2.next;
+       }
+       return true;
+
+
+
+
+
 
     }
 }
-/*
-1. find middle of LL
-2. determine even or odd number of elements
-3. reverse the first half <slow
-4. depending on even or odd, select your starting point of
-5. compare
-
-
-*/
