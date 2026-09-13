@@ -1,6 +1,5 @@
 class Solution {
     public int removeDuplicates(int[] nums) {
-        
         int prev=0,crr=1;
 
         while(crr<nums.length){
@@ -13,7 +12,7 @@ class Solution {
                 crr++;
             }
         }
-        return prev+1;
 
+        return prev+1;
     }
 }
