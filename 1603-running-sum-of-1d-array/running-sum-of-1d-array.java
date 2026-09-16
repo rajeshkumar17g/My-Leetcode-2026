@@ -1,13 +1,13 @@
 class Solution {
-    public static void func(int[] nums,int index){
-        if(index==nums.length){
-            return;
-        }
-        nums[index]=nums[index]+nums[index-1];
-        func(nums,index+1);
-    }
     public int[] runningSum(int[] nums) {
-        func(nums,1);
-        return nums;
+        
+        int[] res=new int[nums.length];
+
+        res[0]=nums[0];
+        for(int i=1;i<nums.length;i++){
+            res[i]=res[i-1]+nums[i];
+        }
+
+        return res;
     }
 }
