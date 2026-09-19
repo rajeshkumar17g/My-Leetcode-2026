@@ -1,1 +1,1 @@
-<h2>search-insert-position Notes</h2><hr>[ Time taken: 4m 3s ]
+<h2>search-insert-position Notes</h2><hr>[ Time taken: 3m 9s ]
