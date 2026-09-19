@@ -6,7 +6,7 @@ class Solution {
         while(low<=high){
             int mid=low+(high-low)/2;
 
-            if(target==nums[mid]){
+            if(nums[mid]==target){
                 return mid;
             }
             else if(target>nums[mid]){
@@ -16,9 +16,6 @@ class Solution {
                 high=mid-1;
             }
         }
-
-
         return -1;
-
     }
 }
