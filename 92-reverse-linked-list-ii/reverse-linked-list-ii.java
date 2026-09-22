@@ -1,40 +1,35 @@
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
 class Solution {
     public ListNode reverseBetween(ListNode head, int left, int right) {
-        if(left==right){
+        if(left==right || head.next==null){
             return head;
         }
-        ListNode first=head,prev=null;
+        //1. crr --> left
         int count=1;
+        ListNode crr=head,prev=null;
         while(count<left){
+            prev=crr;
+            crr=crr.next;
             count++;
-            prev=first;
-            first=first.next;
         }
+        //System.out.println("Prev: "+prev.val+" Crr: "+crr.val);
 
-        ListNode crr=first,after,rev_head=null;
+        ListNode crr1=crr,after,rev_head=null;
         while(count<=right){
+            after=crr1.next;
+            crr1.next=rev_head;
+            rev_head=crr1;
+            crr1=after;
             count++;
-            after=crr.next;
-            crr.next=rev_head;
-            rev_head=crr;
-            crr=after;
         }
-        if(prev==null){
-            first.next=crr;
-            return rev_head;
-        }
+       // System.out.println("rev_head "+rev_head.val+" lastlinkl: "+crr1.val);
+       if(prev==null){
+        head=rev_head;
+       }
+       else{
         prev.next=rev_head;
-        first.next=crr;
+       }
+        crr.next=crr1;
+
         return head;
     }
 }
