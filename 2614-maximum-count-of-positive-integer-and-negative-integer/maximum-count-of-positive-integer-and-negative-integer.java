@@ -43,8 +43,7 @@ class Solution {
             pos_count=0;
         }
 
-        System.out.println("Neg_index: "+neg_index+" posindex "+pos_index);
-        System.out.println("Neg: "+neg_count+" pos: "+pos_count);
+        
         return Math.max(pos_count,neg_count);
 
     }
