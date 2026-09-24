@@ -8,7 +8,7 @@ class Solution:
 
         s=""
         crr=head
-        while crr!=None:
+        while crr:
             s=s+str(crr.val)
             crr=crr.next
         return s==s[::-1]
