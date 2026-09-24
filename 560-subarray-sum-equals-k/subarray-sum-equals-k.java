@@ -1,40 +1,26 @@
 class Solution {
     public int subarraySum(int[] nums, int k) {
 
-        int n=nums.length;
-        int[] prefix=new int[n];
-        prefix[0]=nums[0];
-        for(int i=1;i<n;i++){
-            prefix[i]=prefix[i-1]+nums[i];
-        }
-
-        int count=0;
-        HashMap<Integer,Integer> map=new HashMap<>();
-
-        prefix[0]=nums[0];
-        map.put(prefix[0],1);
-        if(prefix[0]==k){
-            count++;
-        }
-
-        for(int i=1;i<n;i++){
-            if(prefix[i]==k){
-                count++;
-            }
-            int val=prefix[i]-k;
-            if(map.containsKey(val)==true){
-                count=count+map.get(val);
-            }
-
-            if(map.containsKey(prefix[i])==true){
-                map.put(prefix[i],map.get(prefix[i])+1);
-            }
-            else{
-                map.put(prefix[i],1);
-            }  
-        }
+       int[] prefix=new int[nums.length+1];
        
-        System.out.print(map);
-        return count;
+
+       for(int i=1;i<=nums.length;i++){
+          prefix[i]=prefix[i-1]+nums[i-1];
+       }
+
+       HashMap<Integer,Integer> map=new HashMap<>();
+        int count=0;
+
+       for(int i=0;i<prefix.length;i++){
+           int total=prefix[i];
+
+           int comp=total-k;
+           if(map.containsKey(comp)==true){
+              //System.out.println("("+i+","+map.get(comp)+")");
+              count=count+map.get(comp);
+           }
+           map.put(total,map.getOrDefault(total,0)+1);
+       }
+       return count;
     }
 }
