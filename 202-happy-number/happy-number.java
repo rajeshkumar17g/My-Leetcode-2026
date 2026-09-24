@@ -20,7 +20,7 @@ class Solution {
         while(fast!=slow){
             slow=sod(slow);
             fast=sod(sod(fast));
-             System.out.println("Slow: "+slow+" fast: "+fast);
+           //  System.out.println("Slow: "+slow+" fast: "+fast);
 
             if(slow==1 || fast==1){
                 return true;
