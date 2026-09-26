@@ -11,17 +11,7 @@ class NumMatrix {
                 prefix[i][j]=prefix[i-1][j]+prefix[i][j-1]-prefix[i-1][j-1]+matrix[i-1][j-1];
             }
         }
-
-
-         for(int i=0;i<prefix.length;i++){
-            for(int j=0;j<prefix[0].length;j++){
-                System.out.print(prefix[i][j]+" ");
-            }
-            System.out.println();
-         }
-         
-
-
+        
 
     }
     
