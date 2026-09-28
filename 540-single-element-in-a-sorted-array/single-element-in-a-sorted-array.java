@@ -1,6 +1,18 @@
 class Solution {
     public int singleNonDuplicate(int[] nums) {
-        
+       int sum=0;
+       for(int ele:nums){
+            sum=sum^ele;
+       }
+
+       return sum;
+    }
+}
+
+
+/*
+
+ 
         int low=0,high=nums.length-1;
 
         while(low<high){
@@ -19,5 +31,4 @@ class Solution {
             System.out.println("low: "+low+" high: "+high+" mid: "+mid);
         }
         return nums[low];
-    }
-}
+        */
