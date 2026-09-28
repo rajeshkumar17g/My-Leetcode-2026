@@ -1,18 +1,18 @@
 class Solution {
-    public boolean isPerfectSquare(int x) {
-        
-        long low=0,high=x;
+    public boolean isPerfectSquare(int num) {
+         long low=1,high=num;
+
         while(low<=high){
             long mid=low+(high-low)/2;
 
-            if(mid*mid==x){
-                return true;//perfect square
+            if(num==mid*mid){
+                return true;
             }
-            else if(mid*mid>x){
-                high=mid-1;
+            else if(num>mid*mid){
+                low=mid+1;
             }
             else{
-                low=mid+1;
+                high=mid-1;
             }
         }
 
