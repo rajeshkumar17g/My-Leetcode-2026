@@ -9,15 +9,15 @@ class Solution {
             if(mid%2==1){
                 mid--;
             }
-
+            
             if(nums[mid]==nums[mid+1]){
                 low=mid+2;
             }
             else{
                 high=mid;
             }
+            System.out.println("low: "+low+" high: "+high+" mid: "+mid);
         }
-
         return nums[low];
     }
 }
