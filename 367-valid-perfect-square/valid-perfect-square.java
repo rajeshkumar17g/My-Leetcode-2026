@@ -1,21 +1,20 @@
 class Solution {
-    public boolean isPerfectSquare(int num) {
-         long low=1,high=num;
+    public boolean isPerfectSquare(int x) {
+         long low=0,high=x;
 
         while(low<=high){
             long mid=low+(high-low)/2;
 
-            if(num==mid*mid){
+            if(mid*mid==x){
                 return true;
             }
-            else if(num>mid*mid){
-                low=mid+1;
-            }
-            else{
+            else if(mid*mid>x){
                 high=mid-1;
             }
+            else{
+                low=mid+1;
+            }
         }
-
         return false;
     }
 }
