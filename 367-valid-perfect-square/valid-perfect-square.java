@@ -1,6 +1,6 @@
 class Solution {
     public boolean isPerfectSquare(int x) {
-         long low=0,high=x;
+         long low=1,high=x;
 
         while(low<=high){
             long mid=low+(high-low)/2;
@@ -15,6 +15,7 @@ class Solution {
                 low=mid+1;
             }
         }
+
         return false;
     }
 }
