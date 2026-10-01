@@ -1,6 +1,5 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
-        
         //first occurance
         int low=0,high=nums.length-1;
         int fo=-1;
@@ -12,16 +11,16 @@ class Solution {
                 fo=mid;
                 high=mid-1;
             }
-            else if(target<nums[mid]){
-                high=mid-1;
+            else if(target>nums[mid]){
+                low=mid+1;
             }
             else{
-                low=mid+1;
+                high=mid-1;
             }
         }
 
 
-         //last occurance
+        //last occurance
         low=0;
         high=nums.length-1;
         int lo=-1;
@@ -33,15 +32,16 @@ class Solution {
                 lo=mid;
                 low=mid+1;
             }
-            else if(target<nums[mid]){
-                high=mid-1;
-            }
-            else{
+            else if(target>nums[mid]){
                 low=mid+1;
             }
+            else{
+                high=mid-1;
+            }
         }
-
+        
 
         return new int[]{fo,lo};
+       
     }
 }
