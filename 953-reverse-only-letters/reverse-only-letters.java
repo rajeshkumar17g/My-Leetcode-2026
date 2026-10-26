@@ -36,12 +36,6 @@ class Solution {
         
        }
 
-        String dup="";
-        for(char ch: res){
-            dup=dup+ch;
-        }
-       
-
-       return dup;
+       return new String(res);
     }
 }
