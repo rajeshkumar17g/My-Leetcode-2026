@@ -3,10 +3,8 @@
 2. remove all special characters
 3. check if its palindrome?
 
-*/
-class Solution {
-    public boolean isPalindrome(String s) {
-        
+
+
         String lwr="";
 
         for(int index=0;index<s.length();index++){
@@ -41,5 +39,42 @@ class Solution {
         }
 
         return true;
+*/
+class Solution {
+    public boolean isalnum(char ch){
+        if((ch>='a' && ch<='z') || (ch>='A' && ch<='Z') || (ch>='0' && ch<='9')){
+            return true;
+        }
+        return false;
+    }
+    public boolean isPalindrome(String s) {
+        String res=s.toLowerCase();
+
+        int left=0,right=res.length()-1;
+
+        while(left<right){
+
+            // left should point to alphanumeric
+            while(left<right && isalnum(res.charAt(left))==false){
+                left++;
+            }
+
+            // right should point to alphanumeric
+            while(left<right && isalnum(res.charAt(right))==false){
+                right--;
+            }
+
+            if(left<right && res.charAt(left)!=res.charAt(right)){
+                return false;
+            }
+            left++;
+            right--;
+
+        }
+
+
+        return true;
+
+        
     }
 }
