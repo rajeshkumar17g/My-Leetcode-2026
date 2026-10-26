@@ -1,17 +1,19 @@
 class Solution {
     public String toLowerCase(String s) {
-       String res="";
 
-       for(int i=0;i<s.length();i++){
-           char ch=s.charAt(i);
+        String res="";
 
-           if(ch>=65 && ch<=90){
+        for(int index=0;index<s.length();index++){
+            char ch=s.charAt(index);
+
+            if(ch>='A' && ch<='Z'){ //if(ch>=65 && ch<=90)
                 res=res+(char)(ch+32);
-           }
-           else{
+            }
+            else{
                 res=res+ch;
-           }
-       }
-       return res;
+            }    
+        }
+
+        return res;
     }
 }
