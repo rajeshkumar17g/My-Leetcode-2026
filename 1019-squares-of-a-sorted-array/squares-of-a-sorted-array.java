@@ -1,9 +1,10 @@
 class Solution {
     public int[] sortedSquares(int[] nums) {
         
-        int[] ans=new int[nums.length];
+        int[] res=new int[nums.length];
 
-        int k=nums.length-1;
+        int i=nums.length-1;
+
         int left=0,right=nums.length-1;
 
         while(left<=right){
@@ -11,19 +12,16 @@ class Solution {
             int rs=nums[right]*nums[right];
 
             if(ls>rs){
-                ans[k]=ls;
-                k--;
+                res[i]=ls;
                 left++;
             }
             else{
-                ans[k]=rs;
-                k--;
+                res[i]=rs;
                 right--;
             }
-
+            i--;
         }
 
-        return ans;
-
+        return res;
     }
 }
