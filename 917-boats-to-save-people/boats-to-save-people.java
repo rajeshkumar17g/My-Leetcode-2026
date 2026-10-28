@@ -4,22 +4,21 @@ class Solution {
         Arrays.sort(people);
 
         int left=0,right=people.length-1;
-        int boat=0;
+
+        int boats=0;
 
         while(left<=right){
             if(people[left]+people[right]<=limit){
-                boat++;
-                left++;
+                boats++;
                 right--;
+                left++;
             }
             else{
+                boats++;
                 right--;
-                boat++;
             }
         }
-
-        return boat;
-
+        return boats;
 
     }
 }
