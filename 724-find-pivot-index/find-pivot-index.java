@@ -12,9 +12,6 @@ class Solution {
         for(int i=n-2;i>=0;i--){
             sufix[i]=sufix[i+1]+nums[i+1];
         }
-
-
-
          for(int i=0;i<n;i++){
             if(prefix[i]==sufix[i]){
                 return i;
