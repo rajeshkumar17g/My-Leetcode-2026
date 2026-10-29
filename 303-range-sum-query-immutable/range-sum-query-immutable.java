@@ -1,20 +1,18 @@
 class NumArray {
-
-    int[] prefix_sum;    
+    //class level var
+    int[] prefix; //global --> accessable in all methods
     public NumArray(int[] nums) {
-        prefix_sum=new int[nums.length];
+        
+        prefix=new int[nums.length+1];
 
-        prefix_sum[0]=nums[0];
-        for(int i=1;i<nums.length;i++){
-            prefix_sum[i]=prefix_sum[i-1]+nums[i];
+        for(int i=1;i<=nums.length;i++){
+            prefix[i]=prefix[i-1]+nums[i-1];
         }
     }
     
     public int sumRange(int left, int right) {
-        if(left==0){
-            return prefix_sum[right];
-        }
-        return prefix_sum[right]-prefix_sum[left-1];
+        
+        return prefix[right+1]-prefix[left];
     }
 }
 
