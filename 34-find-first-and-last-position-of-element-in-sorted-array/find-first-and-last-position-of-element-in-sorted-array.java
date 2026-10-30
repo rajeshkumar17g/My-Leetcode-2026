@@ -1,9 +1,9 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
-        //first occurance
+        
         int low=0,high=nums.length-1;
         int fo=-1;
-
+        //first occurance
         while(low<=high){
             int mid=low+(high-low)/2;
 
@@ -20,11 +20,10 @@ class Solution {
         }
 
 
-        //last occurance
         low=0;
         high=nums.length-1;
         int lo=-1;
-
+        //last occurance
         while(low<=high){
             int mid=low+(high-low)/2;
 
@@ -39,9 +38,12 @@ class Solution {
                 high=mid-1;
             }
         }
-        
 
         return new int[]{fo,lo};
-       
+
+
+
+
+
     }
 }
