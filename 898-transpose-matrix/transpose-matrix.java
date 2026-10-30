@@ -1,32 +1,36 @@
 class Solution {
     public int[][] transpose(int[][] matrix) {
-       int m=matrix.length; //rows
-       int n=matrix[0].length; //cols
-       int[][] res=new int[n][m]; //res[cols][row]
+        
+        int rows=matrix.length;
+        int cols=matrix[0].length;
 
-       for(int i=0;i<n;i++){//cols
-        for(int j=0;j<m;j++){//rows
-            res[i][j]=matrix[j][i];
+        int[][] res=new int[cols][rows];
+
+        for(int r=0;r<cols;r++){
+            for(int c=0;c<rows;c++){
+                res[r][c]=matrix[c][r];
+            }
         }
-       }
 
-       return res;
+        return res;
     }
 }
 
 
 /*
 
- int n=matrix.length;
-        for(int i=0;i<n;i++){
-            for(int j=0;j<n;j++){
-                if(i<j){
-                    int temp=matrix[i][j];
-                    matrix[i][j]=matrix[j][i];
-                    matrix[j][i]=temp;
+ int rows=matrix.length;
+        int cols=matrix[0].length;
+
+        for(int r=0;r<rows;r++){
+            for(int c=0;c<cols;c++){
+                if(r<c){
+                    int temp=matrix[r][c];
+                    matrix[r][c]=matrix[c][r];
+                    matrix[c][r]=temp;
                 }
             }
         }
-        return matrix;
 
-*/
+        return matrix;
+        */
