@@ -1,15 +1,15 @@
 class Solution {
-    public int mySqrt(int x) {
-
-        long low=0,high=x;
+    public int mySqrt(int num) {
+                
+        long low=0,high=num;
 
         while(low<=high){
             long mid=low+(high-low)/2;
 
-            if(mid*mid==x){
+            if(mid*mid==num){
                 return (int)mid;
             }
-            else if(mid*mid>x){
+            else if(mid*mid>num){
                 high=mid-1;
             }
             else{
@@ -18,6 +18,5 @@ class Solution {
         }
 
         return (int)high;
-        
     }
 }
