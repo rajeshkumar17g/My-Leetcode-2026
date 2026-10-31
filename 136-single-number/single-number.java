@@ -1,9 +1,11 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        int sum=0;
+        
+        int res=0;
         for(int n: nums){
-            sum=sum^n;
+            res=res^n;
         }
-        return sum;
+
+        return res;
     }
 }
