@@ -1,17 +1,17 @@
 class NumArray {
-    //class level var
-    int[] prefix; //global --> accessable in all methods
+
+    int[] prefix; //class level var
     public NumArray(int[] nums) {
         
-        prefix=new int[nums.length+1];
-
-        for(int i=1;i<=nums.length;i++){
+        int n=nums.length;
+        prefix=new int[n+1];
+    
+        for(int i=1;i<=n;i++){
             prefix[i]=prefix[i-1]+nums[i-1];
         }
     }
     
     public int sumRange(int left, int right) {
-        
         return prefix[right+1]-prefix[left];
     }
 }
