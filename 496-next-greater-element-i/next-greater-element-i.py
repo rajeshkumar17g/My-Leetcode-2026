@@ -1,16 +1,23 @@
 class Solution:
-    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+    def nextGreaterElement(self, nums1: list[int], nums2: list[int]) -> list[int]:
+        map={}
         stack=[]
-        nextgreater={}
+
         for num in nums2:
-            while stack!=[] and num>stack[-1]:
-                nextgreater[stack.pop()]=num
+
+            while len(stack)!=0 and num>stack[-1]:
+                map[stack.pop()]=num
+
             stack.append(num)
-        
-        while stack!=[]:
-            nextgreater[stack.pop()]=-1
+
+        while(stack!=[]):
+            map[stack.pop()]=-1
         
         res=[]
         for num in nums1:
-            res.append(nextgreater[num])
+            res.append(map[num])
         return res
+
+
+
+
