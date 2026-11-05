@@ -1,13 +1,15 @@
 class Solution:
-    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
-        n=len(temperatures)
-        res=[0]*n
+    def dailyTemperatures(self, temp: list[int]) -> list[int]:
+        
         stack=[]
-        for crr_index in range(n):
-            while stack!=[] and temperatures[stack[-1]]<temperatures[crr_index]:
-                idx=stack.pop()
-                diff=crr_index-idx
-                res[idx]=diff
-            stack.append(crr_index)
+        ans=[0]*len(temp)
 
-        return res
+        for i in range(len(temp)):
+
+            while(stack!=[] and temp[stack[-1]]<temp[i]):
+                idx=stack.pop()
+                ans[idx]=i-idx
+
+            stack.append(i)
+        
+        return ans
