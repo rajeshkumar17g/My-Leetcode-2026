@@ -1,29 +1,10 @@
 class Solution {
-    int[] dp;
-    public int fib(int n){
-        if(dp[n]!=0){
-            return dp[n];
-        }
-        dp[n]=fib(n-1)+fib(n-2);
-        return dp[n];
-    }
+    ArrayList<Integer> memo=new ArrayList<>(Arrays.asList(1,2));
     public int climbStairs(int n) {
-        dp=new int[n+1];
-        dp[0]=1;
-        dp[1]=1;
-        return fib(n);
+        if(n<=memo.size()){
+            return memo.get(n-1);
+        }
+        memo.add(climbStairs(n-1)+climbStairs(n-2));
+        return memo.get(n-1);
     }
 }
-
-
-/*
-
-if(n==1){
-            return 1;
-        }
-        else if(n==2){
-            return 2;
-        }
-        return climbStairs(n-1)+climbStairs(n-2);
-
-*/
