@@ -10,8 +10,7 @@ class Solution {
 
             dp[i]=Math.min(step1,step2);
         }
-       
-
+    
         return dp[n];
     }
 
